@@ -1,3 +1,4 @@
+import { randomInt } from "crypto";
 import * as express from "express";
 import * as http from "http";
 import * as socketIo from "socket.io";
@@ -25,7 +26,7 @@ io.on("connection", (socket: socketIo.Socket) => {
 });
 
 const getApiAndEmit = (socket: socketIo.Socket) => {
-  const response: Date = new Date();
+  const response: string = randomInt(100).toString();
   // Emitting a new message. Will be consumed by the client
   socket.emit("FromAPI", response);
 };

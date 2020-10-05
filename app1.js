@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+var crypto_1 = require("crypto");
 var express = require("express");
 var http = require("http");
 var socketIo = require("socket.io");
@@ -22,7 +23,7 @@ io.on("connection", function (socket) {
     });
 });
 var getApiAndEmit = function (socket) {
-    var response = new Date();
+    var response = crypto_1.randomInt(100).toString();
     // Emitting a new message. Will be consumed by the client
     socket.emit("FromAPI", response);
 };
